@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - cell
+  - EmptyCell
   layers:
   - Default
   - TransparentFX

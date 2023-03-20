@@ -91,7 +91,6 @@ public class CellSpawner : MonoBehaviour
             return true;
         }
         else if(y == 0 && z == gridHeight - 1){
-            //EQUAL
             return true;
         }
         else if(z == 0 && y == gridHeight - 1){
