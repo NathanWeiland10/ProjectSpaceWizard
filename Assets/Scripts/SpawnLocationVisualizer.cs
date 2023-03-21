@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpawnLocationVisualizer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    ///<summary>A visualization for supplylocation spawn points</summary>
     void Start()
     {
         // Create a new cube primitive to set the color on
-       GameObject visual = createVisualizerMesh();
+       GameObject visual = CreateVisualizerMesh();
 
 
        // Get the Renderer component from the new cube
@@ -19,7 +19,9 @@ public class SpawnLocationVisualizer : MonoBehaviour
 
     }
 
-    GameObject createVisualizerMesh(){
+    ///<summary>creates the mesh for the spawn point visulization</summary>
+    ///<return>GameObject with a 3D mesh attached as child</return>
+    GameObject CreateVisualizerMesh(){
 
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = gameObject.transform.position;
