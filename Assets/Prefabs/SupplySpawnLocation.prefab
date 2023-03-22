@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2866700282394327141}
   m_Layer: 0
   m_Name: SupplySpawnLocation
-  m_TagString: Untagged
+  m_TagString: SupplySpawnLocation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
