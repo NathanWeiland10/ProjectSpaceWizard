@@ -19,8 +19,16 @@ public class Interactor : MonoBehaviour
     [SerializeField]
     private int _numFound;
 
+
+    
+
+    /// <summary>
+    /// every frame, check for overlap for interaction
+    /// https://www.youtube.com/watch?v=THmW4YolDok
+    /// </summary>
     private void Update()
     {
+        
         _numFound = Physics.OverlapSphereNonAlloc(_interactionPoint.position, _interactionPointRadius, _colliders, _interactableMask);
 
         if(_numFound > 0){
@@ -32,7 +40,7 @@ public class Interactor : MonoBehaviour
         }
     }
 
-
+    ///<summary> in editor gizmo visual </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
