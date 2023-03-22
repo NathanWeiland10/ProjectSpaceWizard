@@ -7,7 +7,7 @@ public class SupplySpawner : MonoBehaviour
 {
 
     [SerializeField]
-    private int percent = 30;
+    private int percent = 40;
 
 
     ///<summary> Begin spawning supplies on first frame </summary>
@@ -49,7 +49,7 @@ public class SupplySpawner : MonoBehaviour
         for(int i = 0; i < locations.Length; i ++)
         {
             //random chance to instantiate a supplu object at a point
-            
+
             if(UnityEngine.Random.Range(0,100) >= percent){
 
                 GameObject curSupply = supplies[UnityEngine.Random.Range(0, supplies.Length)];
