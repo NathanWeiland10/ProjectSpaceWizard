@@ -10,6 +10,8 @@ public class Flashlight : MonoBehaviour
 
     private float _batteryHealth = 100.0f;
 
+    private bool _isEquipped = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,29 +21,13 @@ public class Flashlight : MonoBehaviour
 
     void Update() 
     {
-       if (Keyboard.current.fKey.wasPressedThisFrame) {
-            light.SetActive(!IsActive(light));
+        if (Keyboard.current.fKey.wasPressedThisFrame && _batteryHealth > 0 && _isEquipped) {
+            light.SetActive(!light.activeSelf);
         }   
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (light.activeSelf) {
-            _batteryHealth -= 0.005f;
-            Debug.Log(_batteryHealth);  
-        }
-    }
-
-    public bool IsActive(GameObject light)
-    {
-        if (light.activeSelf == true)
-        {
-            return true;
-        } 
-        else
-        {
-            return false;
+        if (light.activeSelf && _batteryHealth > 0 && _isEquipped) {
+            _batteryHealth -= .001f;
+            Debug.Log(_batteryHealth);
         }
     }
 
