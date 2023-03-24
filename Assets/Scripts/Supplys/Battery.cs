@@ -7,7 +7,7 @@ public class Battery : MonoBehaviour, IInteractable
     [SerializeField]
     private string _prompt;
 
-    [SerializeField] GameObject flashLight;
+    [SerializeField] Flashlight flashLight;
 
     public string InteractionPrompt => _prompt;
 
@@ -15,8 +15,7 @@ public class Battery : MonoBehaviour, IInteractable
         Debug.Log("Picking up battery!");
         // do more stuff here
 
-        Flashlight fl = flashLight.GetComponent<Flashlight>();
-        fl.SetBatteryHealth(fl.GetBatteryHealth() + 25);
+        flashLight.SetBatteryHealth(25);
 
         Destroy(this.gameObject);
         return true;

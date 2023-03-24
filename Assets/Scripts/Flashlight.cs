@@ -21,43 +21,13 @@ public class Flashlight : MonoBehaviour
 
     void Update() 
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame && _batteryHealth > 0) {
-            light.SetActive(!IsActive(light));
-            StartCoroutine(DecreaseBattery());
+        if (Keyboard.current.fKey.wasPressedThisFrame && _batteryHealth > 0 && _isEquipped) {
+            light.SetActive(!light.activeSelf);
         }   
-    }
 
-    // Update is called once per frame
-    // void FixedUpdate()
-    // {
-    //     if (light.activeSelf) {
-    //         _batteryHealth -= 0.005f;
-    //         Debug.Log(_batteryHealth);  
-    //     }
-    // }
-
-    IEnumerator DecreaseBattery()
-    {
-        //for (float alpha = _batteryHealth; alpha >= 0f; alpha -= 1f) {
-            _batteryHealth -= 1f;
+        if (light.activeSelf && _batteryHealth > 0 && _isEquipped) {
+            _batteryHealth -= .001f;
             Debug.Log(_batteryHealth);
-            yield return new WaitForSeconds(1f);
-
-            if (light.activeSelf && _batteryHealth > 0) {
-               StartCoroutine(DecreaseBattery());  
-            }
-        //}
-    } 
-
-    public bool IsActive(GameObject light)
-    {
-        if (light.activeSelf == true)
-        {
-            return true;
-        } 
-        else
-        {
-            return false;
         }
     }
 
