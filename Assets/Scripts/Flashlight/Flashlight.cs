@@ -9,7 +9,7 @@ public class Flashlight : MonoBehaviour
 
     [SerializeField] private GameObject _light;
 
-    private float _batteryHealth = 100.0f;
+    [SerializeField] private float _batteryHealth = 100.0f;
 
     private bool _isEquipped = true;
 
@@ -21,15 +21,9 @@ public class Flashlight : MonoBehaviour
 
     private Image _batteryColorImage;
 
-    private const float BatteryDelta = 0.001f;
+    [SerializeField] private float BatteryDelta = 0.001f;
 
-    private const float BatterySliderDelta = 0.00001f;
-
-    private ColorFactory _cf = new ColorFactory();
-
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _light.SetActive(false);
 
@@ -54,10 +48,9 @@ public class Flashlight : MonoBehaviour
 
         if (_light.activeSelf && _batteryHealth > 0 && _isEquipped) {
             _batteryHealth -= BatteryDelta;
-            _batterySlider.value -= BatterySliderDelta;
+            _batterySlider.value = (_batteryHealth / 100);
 
-            _cf.SetTime(_batteryHealth);
-            _batteryColorImage.color = _cf.GetBatteryLerp();
+            _batteryColorImage.color = Color.Lerp(Color.red, Color.green, _batterySlider.value);
         }
     }
 
@@ -69,7 +62,8 @@ public class Flashlight : MonoBehaviour
     public void SetBatteryHealth(float newHealth)
     {
         _batteryHealth = Mathf.Min(_batteryHealth + newHealth, 100.0f);
-        _batterySlider.value = Mathf.Min(_batterySlider.value + (newHealth/100.0f), 1.0f); 
+        _batterySlider.value = Mathf.Min(_batterySlider.value + (newHealth/100.0f), 1.0f);
+        _batteryColorImage.color = Color.Lerp(Color.red, Color.green, _batterySlider.value);
     }
 
 
