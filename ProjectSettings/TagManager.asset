@@ -9,6 +9,8 @@ TagManager:
   - EmptyCell
   - Supply
   - SupplySpawnLocation
+  - BatteryIndicator
+  - BatteryColor
   layers:
   - Default
   - TransparentFX
