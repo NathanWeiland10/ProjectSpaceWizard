@@ -7,9 +7,14 @@ public class Battery : MonoBehaviour, IInteractable
     [SerializeField]
     private string _prompt;
 
-    [SerializeField] Flashlight flashLight;
+    private Flashlight flashLight;
 
     public string InteractionPrompt => _prompt;
+
+    void Awake()
+    {
+        flashLight = FindObjectOfType<Flashlight>();
+    }
 
     public bool Interact(Interactor interactor){
         Debug.Log("Picking up battery!");
